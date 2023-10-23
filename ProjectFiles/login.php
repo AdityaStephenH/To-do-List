@@ -9,10 +9,6 @@ if (isset($_POST['submit'])) {
     exit();
 }
 
-if (isset($_SESSION['success_message'])) {
-    echo "<div class='alert alert-success text-center'>" . $_SESSION['success_message'] . "</div>";
-    unset($_SESSION['success_message']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +41,16 @@ if (isset($_SESSION['success_message'])) {
     </style>
 </head>
 <body style="background-image:url(src/bglogin.jpg)">
+    
     <div class="col">
+        <?php
+        if (isset($_SESSION['success_message'])) {
+            echo "<div class='alert alert-success text-center' style='position: fixed; top: 0; left: 0; width: 100%; z-index: 999;'>" . $_SESSION['success_message'] . "</div>";
+            unset($_SESSION['success_message']);
+        }
+        ?>
+
+
         <div class="row mb-5">
             <img src="src/percilok.png" style="width: 180px;">
         </div>

@@ -3,6 +3,8 @@ session_start();
 if (isset($_SESSION["user"])) {
    header("Location: index.php");
 }
+$errormsg = array();
+
 if (isset($_POST["submit"])) {
     $fullName = $_POST["fullname"];
     $email = $_POST["email"];
@@ -33,24 +35,24 @@ if (isset($_POST["submit"])) {
     if ($rowCount>0) {
     array_push($errors,"Email already exists!");
     }
-    if (count($errors)>0) {
+    if (count($errors) > 0) {
     foreach ($errors as  $error) {
-        echo "<div class='alert alert-danger'>$error</div>";
+        array_push($errormsg, $error);
     }
-    }else{
     
+     }else{
     $sql = "INSERT INTO users (name, email, password) VALUES ( ?, ?, ? )";
     $stmt = mysqli_stmt_init($conn);
     $prepareStmt = mysqli_stmt_prepare($stmt,$sql);
-    if ($prepareStmt) {
-        mysqli_stmt_bind_param($stmt,"sss",$fullName, $email, $passwordHash);
-        mysqli_stmt_execute($stmt);
-        $_SESSION['success_message'] = "You are registered successfully.";
-        header("Location: login.php");
-        exit();
-    }else{
-        die("Something went wrong!");
-    }
+        if ($prepareStmt) {
+            mysqli_stmt_bind_param($stmt,"sss",$fullName, $email, $passwordHash);
+            mysqli_stmt_execute($stmt);
+            $_SESSION['success_message'] = "You are registered successfully.";
+            header("Location: login.php");
+            exit();
+        }else{
+            die("Something went wrong!");
+        }
     }
     
 
@@ -92,6 +94,12 @@ if (isset($_POST["submit"])) {
                 <img src="src/percilok.png" style="width: 180px;">
         </div>
         <div class="container bg-gray-40 row">
+        <?php if(count($errormsg) > 0):
+             foreach($errormsg as  $error): ?>
+            <div class='alert alert-danger'><?= $error ?></div>
+            
+            <?php endforeach;
+            endif; ?>
             
             <form action="registration.php" method="post" >
                 <div class="form-group">
