@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
         <div class="row mb-5">
             <img src="src/percilok.png" style="width: 180px;">
         </div>
-        <div class="container bg-gray-40 row">
+        <div class="container row">
             <?php
             if (isset($_POST["login"])) {
             $email = $_POST["email"];

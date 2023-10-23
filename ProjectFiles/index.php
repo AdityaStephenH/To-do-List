@@ -159,7 +159,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="pt-4 h-[450px] md:h-[510px] overflow-y-auto ">
+					<div class="pt-4 h-[450px] md:h-[487px] overflow-y-auto ">
 						<table class="table  table-hover bg-base-200 mx-auto  bg-slate-900 relative ">
 							<thead class="text-center sticky top-0 bg-slate-900 z-50">
 								<tr class="text-white font-bold text-xl h-16">
@@ -216,9 +216,9 @@
 								while($s = mysqli_fetch_array($run_q_select_done)):
 								?>
 								<tr>
-									<td class="align-middle text-center">
+									<td class="align-middle text-center capitalize text-lg">
 										<div>
-											<span class="<?= $s['status'] == 'close' ? 'line-through':'' ?> text-white"><?= $s['task'] ?></span>
+											<span class="<?= $s['status'] == 'close' ? 'line-through ':'' ?> text-white"><?= $s['task'] ?></span>
 										</div>
 									</td>
 									<td class="align-middle text-center">
