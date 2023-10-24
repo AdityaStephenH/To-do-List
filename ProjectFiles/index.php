@@ -123,7 +123,7 @@
 			<a href="logout.php" class="btn mx-5 text-sm">Logout</a>
 		</div>
 	</div>
-	<figure class="min-h-screen relative"  style="background-image: url('src/bg.gif');">
+	<figure class="min-h-screen relative"  style="background-image: url('src/bg.gif'); background-size: cover;">
 		<div class="container mx-auto pt-20 w-5/6 sm:w-3/4 h-screen">
 			<div class="text-4xl text-white text-center">
 				<div class="title" >
@@ -255,16 +255,16 @@
 							</tbody>
 						</table>
 						<?php if (mysqli_num_rows($run_q_select_open) == 0 && mysqli_num_rows($run_q_select_done) == 0):?>
-						<div class="flex items-center mx-auto ">
+						<div class="items-center mx-auto flex justify-center">
 							<form action="" method="post">
-								<div class="row">
+								<div class="row items-center">
 									<input type="text" name="task" class="input input-bordered w-max" placeholder="Add task" required>
 									<button type="submit" name="add" class="btn btn-active btn-primary mt-4" >Add</button>
 								</div>
 							</form>
 						</div>
 			
-						<div class="text-2xl text-white text-center">
+						<div class="text-2xl text-white text-center mt-4">
 							Belum Ada Task
 						</div>
 						<?php endif; ?>
